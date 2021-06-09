@@ -32,10 +32,10 @@ app = Flask(__name__)
 MODEL_PATH = './2catg_incptnv3_model.pt'
 
 # Load your trained model
-#mdl = torch.load(MODEL_PATH, map_location=torch.device('cpu'))
-#mdl.eval()
-md=models.inception_v3(pretrained=True)
-md.fc=nn.Sequential(nn.Linear(2048,500),nn.ReLU(),nn.Linear(500,50),nn.ReLU(),nn.Linear(50,2))
+mdl = torch.load(MODEL_PATH, map_location=torch.device('cpu'))
+mdl.eval()
+#md=models.inception_v3(pretrained=True)
+#md.fc=nn.Sequential(nn.Linear(2048,500),nn.ReLU(),nn.Linear(500,50),nn.ReLU(),nn.Linear(50,2))
 
 def model_predict(img_path):
     im = Image.open(img_path)
