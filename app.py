@@ -13,7 +13,7 @@ import torchvision
 from torch.utils.data import Dataset, DataLoader
 from torch.optim import AdamW
 import torch.nn as nn
-#import cv2 as cv
+import cv2 as cv
 from torchvision import models, transforms
 import PIL
 from PIL import Image
@@ -40,9 +40,9 @@ mdl.eval()
 def model_predict(img_path):
     im = Image.open(img_path)
     im = np.array(im)
-    #im = cv.resize(im,(448,448))
-    #im = cv.cvtColor(np.array(im), cv.COLOR_BGR2RGB)
-    #im=cv.addWeighted ( im,4, cv.GaussianBlur( im , (0,0) , 8) ,-4 ,140)
+    im = cv.resize(im,(448,448))
+    im = cv.cvtColor(np.array(im), cv.COLOR_BGR2RGB)
+    im=cv.addWeighted ( im,4, cv.GaussianBlur( im , (0,0) , 8) ,-4 ,140)
     im=np.array(im)
     im=im/255.0
     im=torch.Tensor(im)
