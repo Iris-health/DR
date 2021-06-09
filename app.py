@@ -72,13 +72,6 @@ def upload():
     if request.method == 'POST':
         # Get the file from post request
         f = request.files['file']
-        # Save the file to ./uploads
-        basepath = os.path.dirname(__file__)
-        file_path = os.path.join(
-            basepath, 'uploads', secure_filename(f.filename))
-        f.save(file_path)
-
-        #predict
         preds = model_predict(f)
         result='NAN'
         if(preds[0][0]>preds[0][1]):
